@@ -17,6 +17,7 @@ include_once "db.php";
     <title> 檔案管理功能 </title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap-grid.min.css">
 </head>
 <body>
 <h1 class="header"> 檔案管理練習 </h1>
@@ -69,6 +70,7 @@ $files=all('files');
 
         }
     ?>
+    <!--  -->
         <tr>
             <td><?=$file['id'];?></td>
             <td><img class='thumbs' style="width:200px;heigh:200px" src="<?=$imgname;?>"></td>
