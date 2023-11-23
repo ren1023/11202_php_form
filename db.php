@@ -29,7 +29,7 @@ function all($table = null, $where = '', $other = '')
         $rows = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
         return $rows;
     } else {
-        echo "錯誤：沒有指定的資料表名稱";
+        echo "錯誤:沒有指定的資料表名稱";
     }
 }
 
@@ -46,7 +46,7 @@ function total($table, $id)
     } else if (is_numeric($id)) {
         $sql .= " where `id`='$id'";
     } else {
-        echo "錯誤：參數的資料型態比須是數字或陣列";
+        echo "錯誤:參數的資料型態比須是數字或陣列";
     }
     //echo 'find=>'.$sql;
     $row = $pdo->query($sql)->fetchColumn();
@@ -66,7 +66,7 @@ function find($table, $id)
     } else if (is_numeric($id)) {
         $sql .= " where `id`='$id'";
     } else {
-        echo "錯誤：參數的資料型態比須是數字或陣列";
+        echo "錯誤:參數的資料型態比須是數字或陣列";
     }
     //echo 'find=>'.$sql;
     $row = $pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
@@ -84,7 +84,7 @@ function update($table, $id, $cols)
             $tmp[] = "`$col`='$value'";
         }
     } else {
-        echo "錯誤：缺少要編輯的欄位陣列";
+        echo "錯誤:缺少要編輯的欄位陣列";
     }
 
     $sql .= join(",", $tmp);
@@ -97,7 +97,7 @@ function update($table, $id, $cols)
     } else if (is_numeric($id)) {
         $sql .= " where `id`='$id'";
     } else {
-        echo "錯誤：參數的資料型態比須是數字或陣列";
+        echo "錯誤:參數的資料型態比須是數字或陣列";
     }
     // echo $sql;
     return $pdo->exec($sql);
@@ -131,7 +131,7 @@ function del($table, $id)
     } else if (is_numeric($id)) {
         $sql .= " `id`='$id'";
     } else {
-        echo "錯誤：參數的資料型態比須是數字或陣列";
+        echo "錯誤:參數的資料型態比須是數字或陣列";
     }
     //echo $sql;
 

@@ -24,7 +24,7 @@ if(!empty($_FILES['img']['tmp_name'])){
     //header("location:../upload.php?img=".$filename);
     header("location:../manage.php");
 }else{
-    header ("location:../upload.php?err = 上傳失敗");
+    header("location:../upload.php?err=上傳失敗");
 }
 
 ?>
