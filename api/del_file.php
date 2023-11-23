@@ -1,15 +1,12 @@
 <?php
-
 include_once "../db.php";
 
 $id=$_GET['id'];
-
-$file=find ('files',$id)['name']; // 輸出檔名
+$file=find('files',$id)['name'];
 
 del('files',$id);
 
 unlink('../imgs/'.$file);
 
-header("location:../manage.php");
 
-?>
+header("location:../manage.php");
