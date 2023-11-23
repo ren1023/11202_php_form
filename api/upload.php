@@ -55,7 +55,7 @@ if(!empty($_FILES['img']['tmp_name'])){
     
 
     $file=['name'=>$filename,
-            'type'=>$_FILES['img']['type'],
+            'type'=>$type,
             'size'=>$_FILES['img']['size'],
             'desc'=>$_POST['desc']];
 
