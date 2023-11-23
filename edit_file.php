@@ -6,14 +6,9 @@ if (isset ($_GET ['id'])) { // 若檔案什麼都沒有時，什麼事都不執�
 } else {
     exit();
 }
-
 ?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,17 +16,12 @@ if (isset ($_GET ['id'])) { // 若檔案什麼都沒有時，什麼事都不執�
     <title> 編輯檔案 </title>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
-
 <body>
     <h1 class="header"> 編輯檔案 </h1>
-
-    <div class="text-center">
-        <a href="manage.php"> 回列表 </a>
-    </div>
+    
     <!---- 建立你的表單及設定編碼 ----->
     <?php
     if (isset($_GET['err'])) {
@@ -39,6 +29,9 @@ if (isset ($_GET ['id'])) { // 若檔案什麼都沒有時，什麼事都不執�
     }
     ?>
     <!-- 當有取得 id 時，則要顯示資料在我的欄位中 -->
+    <div class="text-center">
+        <a href="manage.php"> 回列表 </a>
+    </div>
     <form action="./api/edit_file.php" method="post" enctype="multipart/form-data">
         <div class="col-6 mx-auto">
             <table class="table">
@@ -70,9 +63,8 @@ if (isset ($_GET ['id'])) { // 若檔案什麼都沒有時，什麼事都不執�
                                 $imgname = "./icon/other.png";
                         }
                         ?>
-
-                        <img src="<?= $imgname; ?>" style="width:300px;height:200px;" alt="" srcset="">
-                        <input type="file" name="img" id="">
+                        <img src="<?= $imgname; ?>" style="width:300px;height:200px;" >
+                        <input type="file" name="img" >
                     </td>
                 </tr>
                 <tr>
@@ -83,12 +75,12 @@ if (isset ($_GET ['id'])) { // 若檔案什麼都沒有時，什麼事都不執�
                     <td> 說明 </td>
                     <td><textarea name="desc" id="" style="width:300px;height:200px;"><?= $file['desc']; ?></textarea></td>
                 </tr>
-
             </table>
-            <div class="text-center m-3"></div>
+            <div class="text-center m-3">
+            <input type="hidden" name="id" value="<?=$file['id'];?>">
             <input type="submit" value="更新">
+            </div>
         </div>
-
     </form>
     <!---- 建立一個連結來查看上傳後的圖檔 ---->
     <?php
@@ -97,5 +89,4 @@ if (isset ($_GET ['id'])) { // 若檔案什麼都沒有時，什麼事都不執�
     }
     ?>
 </body>
-
 </html>
