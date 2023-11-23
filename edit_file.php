@@ -24,7 +24,9 @@ if(isset($_GET['err'])){
 <form action="./api/edit_file.php" method="post" enctype="multipart/form-data">
 
 <input type="file" name="img" id="">
+<!-- 請輸入檔案名稱來更新 -->
 <input type="text" name="name" value="">
+<!-- 請輸入檔案描述來更新 -->
 <input type="text" name="desc" value="">
 <input type="submit" value="更新">
 </form>
