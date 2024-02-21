@@ -24,6 +24,12 @@
 <h1 class="header">圖形處理練習</h1>
 <!---建立檔案上傳機制--->
 
+<form action="?" method="post">
+    <label for="">選擇檔案</label>
+    <input type="file" name="img" id="">
+    <input type="button" value="上傳">
+
+</form>
 
 
 <!----縮放圖形----->
