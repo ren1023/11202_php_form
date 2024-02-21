@@ -18,27 +18,58 @@ if (!empty($_FILES['img']['tmp_name'])) {
     switch ($type) {
         case 'image/jpeg':
             $source = imagecreatefromjpeg($source_path);
-            list($width, $heigh) = getimagesize($source_path);
+            list($width, $height) = getimagesize($source_path);
             break;
         case 'image/png':
             $source = imagecreatefrompng($source_path);
-            list($width, $heigh) = getimagesize($source_path);
+            list($width, $height) = getimagesize($source_path);
 
             break;
         case 'image/gif':
             $source = imagecreatefromgif($source_path);
-            list($width, $heigh) = getimagesize($source_path);
+            list($width, $height) = getimagesize($source_path);
             break;
         case 'image/bmp':
             $source = imagecreatefrombmp($source_path);
-            list($width, $heigh) = getimagesize($source_path);
+            list($width, $height) = getimagesize($source_path);
             break;
     }
-    $dst_path = './imgs/small_' . $_FILES['img']['name'];
-    $dst_width=150;
-    $dst_heigh=200;
-    $dst_source=imagecreatetruecolor($dst_width,$dst_heigh);
-    imagecopyresampled($dst_source,$source,0,0,0,0,$dst_width,$dst_heigh,$width,$heigh);
+    $dst_path = './imgs/thumb_' . $_FILES['img']['name'];//縮圖的檔名
+    $dst_width=300;
+    $dst_height=300;
+    $border=30;
+
+    $dst_source=imagecreatetruecolor($dst_width,$dst_height);
+    $white=imagecolorallocate($dst_source,255,255,255);
+    $red=imagecolorallocate($dst_source,255,0,0);
+    $skyblue=imagecolorallocate($dst_source,122,204,244);
+    imagefill($dst_source,0,0,$skyblue);
+
+    //判斷形狀
+    if($width==$height){
+        // 正方形
+        $scale=($dst_width-($border*2))/$width;
+        $new_width=$width*$scale;
+        $new_height=$height*$scale;
+        $dst_x=30;
+        $dst_y=30;
+    }else if($width<$height){
+        //直向
+        $scale=($dst_width-($border*2))/$height;
+        $new_width=$width*$scale;
+        $new_height=$height*$scale;
+        $dst_x=floor(($dst_width-$new_width)/2);
+        $dst_y=30;
+    }else{
+        //橫向
+        $scale=($dst_width-($border*2))/$width;
+        $new_width=$width*$scale;
+        $new_height=$height*$scale;
+        $dst_x=30;
+        $dst_y=floor(($dst_width-$new_height)/2);
+    }
+
+    imagecopyresampled($dst_source,$source,$dst_x,$dst_y,0,0,$new_width,$new_height,$width,$height);
 
     switch ($type) {
         case 'image/jpeg':
@@ -68,12 +99,12 @@ if (!empty($_FILES['img']['tmp_name'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>圖形檔案處理</title>
+    <title>圖形檔案處理-加邊框</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1 class="header">圖形處理練習</h1>
+    <h1 class="header">圖形檔案處理-加邊框</h1>
     <!---建立檔案上傳機制--->
 
     <form action="?" method="post" enctype="multipart/form-data">
@@ -84,10 +115,12 @@ if (!empty($_FILES['img']['tmp_name'])) {
 
 
     <!----縮放圖形----->
-    <img src="<?=$dst_path;?>" alt="">
 
 
     <!----圖形加邊框----->
+
+    <img src="<?=$dst_path;?>" alt="">
+
 
 
     <!----產生圖形驗證碼----->
