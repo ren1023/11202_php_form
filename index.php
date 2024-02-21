@@ -12,6 +12,6 @@
 <a href="manage.php"><div class="types">檔案管理</div></a>
 <a href="text-import.php"><div class="types">文字檔案處理</div></a>
 <a href="image.php"><div class="types">圖形處理</div></a>
-<a href="image2.php"><div class="types">圖形處理-加邊框</div></a>
+<a href="filelist.php"><div class="types">圖形處理-瀏灠資料夾</div></a>
 </body>
 </html>
