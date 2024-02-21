@@ -40,10 +40,10 @@ if (!empty($_FILES['img']['tmp_name'])) {
     $border=30;
 
     $dst_source=imagecreatetruecolor($dst_width,$dst_height);
-    $white=imagecolorallocate($dst_source,255,255,255);
+    $white=imagecolorallocate($dst_source,255,255,255);//定義顏色
     $red=imagecolorallocate($dst_source,255,0,0);
     $skyblue=imagecolorallocate($dst_source,122,204,244);
-    imagefill($dst_source,0,0,$skyblue);
+    imagefill($dst_source,0,0,$skyblue);//填色
 
     //判斷形狀
     if($width==$height){
