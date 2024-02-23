@@ -13,5 +13,6 @@
 <a href="text-import.php"><div class="types">文字檔案處理</div></a>
 <a href="image.php"><div class="types">圖片處理</div></a>
 <a href="filelist.php"><div class="types">圖片處理-瀏灠資料夾</div></a>
+<a href="filelist.php"><div class="types">圖形驗證</div></a>
 </body>
 </html>
