@@ -4,6 +4,10 @@
 //     print_r($_POST['select']);
 //     echo "這些資料";
 // }
+?>
+
+
+<?php
 
 if(!empty($_POST)){
     $rows=all('animal'," where `統一編號` in ('".join("','",$_POST['select'])."') ");
@@ -42,11 +46,18 @@ echo "<a href='./doc/{$filename}.csv' downded>檔案已匯出，請點此連結�
             color: white;
         }
     </style>
+    
+    <script src="./js/jquery-3.4.1.min.js"></script>
+
     <form action="?" method="post">
         <input type="submit" value="匯出">
  <table>
     <tr>
-        <th>是否匯出</th>
+
+        <th>
+        <input type="checkbox" id="select" >
+        勾選
+        </th>
         <th>統一編號</th>
         <th>商業名稱</th>
         <th>商業地址</th>
@@ -70,3 +81,13 @@ foreach($rows as $row){
 ?>
  </table>
  </form>
+ <script>
+ 
+ $('#select').on("change",function(){
+    if($(this).prop('checked')){
+        $("input[name='select[]']").prop('checked',true);
+    }else{
+        $("input[name='select[]']").prop('checked',false);
+}
+ })
+</script>
